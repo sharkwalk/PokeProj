@@ -33,7 +33,7 @@ div {
 .prompt {
     color: yellow;
     text-align: center;
-    background-color: 006c8b;
+    background-color: #006c8b;
     border-color: black;
     border-radius: 15px;
     max-width: 600px;
@@ -54,6 +54,10 @@ div {
 
 .guessBox {
     width: auto;
+}
+
+.leader_name {
+    margin-left: 50px;
 }
 .text1 {
     margin: 1em 0 5px;

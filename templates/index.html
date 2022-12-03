@@ -29,6 +29,17 @@
         </div>
         <div class="score">
             <p>leaderboard</p>
+            <div class="leaders">
+            {% for username in usernames %}
+                <p class="leader_name">{{ username }} {{score}} </p>
+            {% endfor %}
+            </div>
+            <div class ="leaders">
+                {% for score in userscores %}
+                <p class="leader_name">{{ score }} </p>
+            {% endfor %}
+            </div> 
+      
             
         </div>
     </div>
@@ -50,6 +61,15 @@
         console.log(guess);
 
         console.log(ans);
+
+        fetch('/pokename').then(function (response) {
+                return response.json();
+            }).then(function (text) {
+                randint = text.pokenum;
+                path = '/static/other/official-artwork/' + randint + '.png'
+                document.getElementById("pokemon").src = path
+                ans = text.pokename;
+            });
 
         if (guess == ans) {
             text = "correct!";
@@ -77,6 +97,7 @@
             score = 0;
             document.getElementById("curStreak").innerHTML = 0; 
             $.post( "/postmethod", {
+                username: name, 
                 javascript_data: maxScore 
             }); 
         }
