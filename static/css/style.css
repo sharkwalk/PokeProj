@@ -1,0 +1,68 @@
+﻿body {
+    background-color: skyblue;
+}
+div {
+    display: block;
+}
+
+.banner {
+    margin: auto;
+    max-width: 60%;
+}
+#pokebanner {
+    margin: auto;
+    max-width: fit-content;
+    max-width: 400px;
+}
+.container {
+    margin: auto;
+}
+.game {
+    color: yellow;
+    text-align: center;
+    background-color: darkcyan;
+    border-color: black;
+    border-radius: 15px;
+    max-width: 600px;
+    min-height: 500px;
+    margin: auto;
+    float: left;
+    min-width: 400px;
+}
+
+.prompt {
+    color: yellow;
+    text-align: center;
+    background-color: 006c8b;
+    border-color: black;
+    border-radius: 15px;
+    max-width: 600px;
+    min-height: 200px;
+    margin: auto;
+    min-width: 400px;
+}
+
+.score {
+    background-color: #006c8b;
+    color: yellow;
+    width: 20%;
+    float: left;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.guessBox {
+    width: auto;
+}
+.text1 {
+    margin: 1em 0 5px;
+    height: 50px;
+    font-size: 175%;
+    width: auto;
+}
+#pokemon {
+    height: 250px;
+    width: auto;
+    filter: contrast(0%) brightness(50%);
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script language="JavaScript" type="text/javascript" src="/js/jquery-1.2.6.min.js"></script>
+    <script language="JavaScript" type="text/javascript" src="/js/jquery-ui-personalized-1.5.2.packed.js"></script>
+    <script language="JavaScript" type="text/javascript" src="/js/sprinkle.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <title></title>
+</head>
+<body>
+    <div class="banner">
+        <img src="static/poke_logo.png" id="pokebanner">
+    </div>
+    <div class="prompt" name="prompt" id="username"> 
+        <p> 
+            What's your name? 
+        </p>
+        <form action="/game" method="post">
+            <input type="text" class="text1" name="name" id="name" />
+            <button type="submit" hidden></button>
+        </form>
+    </div>
+    <!-- <script language="JavaScript" type="text/javascript">
+            function postData(){
+                var name = document.getElementById("name").value;
+                console.log(name); 
+                $.post( "/username", {
+                username: name
+            }); 
+            }
+
+    </script> -->
+</body>

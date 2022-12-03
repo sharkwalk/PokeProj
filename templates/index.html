@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script language="JavaScript" type="text/javascript" src="/js/jquery-1.2.6.min.js"></script>
+    <script language="JavaScript" type="text/javascript" src="/js/jquery-ui-personalized-1.5.2.packed.js"></script>
+    <script language="JavaScript" type="text/javascript" src="/js/sprinkle.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <title></title>
+</head>
+<body>
+    <div class="banner">
+        <img src="static/poke_logo.png" id="pokebanner">
+    </div>
+    <div class="container">
+        <div class="game">
+            <h1>Who's that Pokemon?</h1>
+                <img src="{{ user_image }}" id="pokemon" class="center" />
+            <div class = "guessBox">
+                <input type="text" class="text1" name="guess" placeholder="Guess a Pokemon" id="guess" />
+                <button type="submit" onclick="getguess()"> </button>
+            </div>
+        </div>
+        <div class="score">
+            <h3>High Score:</h3>      
+            <p id="maxStreak"> 0 </p>   
+            <p id="curStreak"> 0 </p>
+        </div>
+        <div class="score">
+            <p>leaderboard</p>
+            
+        </div>
+    </div>
+
+
+    <script language="JavaScript" type="text/javascript">
+
+    var score = 0; 
+    var maxScore = 0; 
+
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+    }
+    var ans = "{{ poke_name }}";
+    function getguess() {
+        var guess = document.getElementById("guess").value;
+        console.log(guess);
+
+        console.log(ans);
+
+        if (guess == ans) {
+            text = "correct!";
+            score++; 
+            console.log(score);
+            document.getElementById("curStreak").innerHTML = score;
+            // document.getElementById("pokemon").style.filter = "contrast(100%) brightness(100%)"
+
+            var randint;
+            fetch('/pokename').then(function (response) {
+                return response.json();
+            }).then(function (text) {
+                randint = text.pokenum;
+                path = '/static/other/official-artwork/' + randint + '.png'
+                document.getElementById("pokemon").src = path
+                ans = text.pokename;
+            });
+ 
+            if (score > maxScore) {
+                document.getElementById("maxStreak").innerHTML = score;
+                maxScore = score;
+            }
+        } else {
+            text = "false";
+            score = 0;
+            document.getElementById("curStreak").innerHTML = 0; 
+            $.post( "/postmethod", {
+                javascript_data: maxScore 
+            }); 
+        }
+
+        console.log('MAX SCORE', maxScore);
+
+
+
+
+        //  $.ajax({
+        //     url: '{{ url_for('index') }}',
+        //     type: 'POST',
+        //     data: {
+        //         name: text
+        //     },
+        //     success: function (response) {
+        //     },
+        //     error: function (response) {
+        //     }
+        // });
+
+    }
+
+     </script>
+
+
+</body>
+</html>
